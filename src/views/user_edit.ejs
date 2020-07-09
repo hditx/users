@@ -1,0 +1,35 @@
+<%- include ('header') -%>
+<div class="conteiner">
+    <div class="row mt-5">
+        <div class="col-md-5">
+            <div class="card center">
+                <div class="card-head">
+                    <h3>Editar Usuario <%= data.id %></h3>
+                </div>
+                <div class="card-body">
+                    <form action="/edit/<%= data.id %>" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" value="<%= data.name %>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name" value="<%= data.last_name %>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="dni" value="<%= data.dni %>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="birth_day" value="<%= data.birth_day %>" class="form-control">
+                        </div>
+                        <a href="/" class="btn btn-primary">
+                            Back
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            Edit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('footer') -%>

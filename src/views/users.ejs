@@ -1,0 +1,63 @@
+<%- include ('header') -%>
+<%- include ('search') -%>
+<div class="conteiner">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <h3>Listado de Usuarios</h3>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data != null) {%>
+                        <% for (let i = 0; i < data.length ; ++i) {%>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= data[i].name %></td>
+                                <td><%= data[i].last_name %></td>
+                                <td><%= data[i].dni %></td>
+                                <td><%= data[i].birth_day %></td>
+                                <td>
+                                    <a href="/edit/<%= data[i].id %>"><i class="fa fa-pencil"></i></a>
+                                    <a href="/delete/<%= data[i].id %>"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <h3>Nuevo Usuario</h3>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" value="" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="last_name" value="" placeholder="Apellido" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="dni" value="" placeholder="DNI" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="birth_day" value="" placeholder="Fecha de Nacimiento" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('footer') -%>
